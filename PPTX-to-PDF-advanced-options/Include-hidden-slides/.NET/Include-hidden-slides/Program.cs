@@ -10,7 +10,7 @@ using (FileStream inputStream = new FileStream(Path.GetFullPath(@"../../../Data/
     {
         //Create an instance of PresentationToPdfConverterSettings.
         PresentationToPdfConverterSettings pdfConverterSettings = new PresentationToPdfConverterSettings();
-        //Enable or disable including the hidden slides option in converter settings.               
+        //Enable or disable including the hidden slides option in converter settings.
         pdfConverterSettings.ShowHiddenSlides = true;
         //Convert PowerPoint into PDF document. 
         using (PdfDocument pdfDocument = PresentationToPdfConverter.Convert(pptxDoc, pdfConverterSettings))
