@@ -10,7 +10,7 @@ using (FileStream inputStream = new FileStream(Path.GetFullPath(@"../../../Data/
     {
         //Create an instance of PresentationToPdfConverterSettings.
         PresentationToPdfConverterSettings pdfConverterSettings = new PresentationToPdfConverterSettings();
-        //Enable the option to include notes page content in converter settings.
+        //Enables the option to include notes page content in the PDF conversion.
         pdfConverterSettings.PublishOptions = PublishOptions.NotesPages;
         //Convert PowerPoint into PDF document. 
         using (PdfDocument pdfDocument = PresentationToPdfConverter.Convert(pptxDoc, pdfConverterSettings))

@@ -32,11 +32,23 @@ using (FileStream inputStream = new FileStream(Path.GetFullPath(@"../../../Data/
 /// <param name="args">Retrieves the unavailable font name and receives the substitute font stream for conversion. </param>
 static void FontSettings_SubstituteFont(object sender, SubstituteFontEventArgs args)
 {
-    //Check if the original font is "Arial Unicode MS" and substitute with alternate font.
-    if (args.OriginalFontName == "Arial Unicode MS" && args.FontStyle == FontStyle.Bold)
-        args.AlternateFontStream = new FileStream(Path.GetFullPath(@"../../../Data/cambriab.ttf"), FileMode.Open, FileAccess.ReadWrite);
-    else if (args.OriginalFontName == "Arial Unicode MS" && args.FontStyle == FontStyle.Regular)
-        args.AlternateFontStream = new FileStream(Path.GetFullPath(@"../../../Data/BROADW.TTF"), FileMode.Open, FileAccess.ReadWrite);
+    //Check if the original font is "Arial Unicode MS" and substitute with "Calibri".
+    if (args.OriginalFontName == "Arial Unicode MS")
+    {
+        switch (args.FontStyle)
+        {
+            case FontStyle.Italic:
+                args.AlternateFontStream = new FileStream(Path.GetFullPath(@"../../../Data/calibrii.ttf"), FileMode.Open, FileAccess.ReadWrite);
+                break;
+            case FontStyle.Bold:
+                args.AlternateFontStream = new FileStream(Path.GetFullPath(@"../../../Data/calibrib.ttf"), FileMode.Open, FileAccess.ReadWrite);
+                break;
+            default:
+                args.AlternateFontStream = new FileStream(Path.GetFullPath(@"../../../Data/calibri.ttf"), FileMode.Open, FileAccess.ReadWrite);
+                break;
+        }
+    }
     else
-        args.AlternateFontStream = new FileStream(Path.GetFullPath(@"../../../Data/COOPBL.TTF"), FileMode.Open, FileAccess.ReadWrite);
+        //Subsitutue "Times New Roman" for any other missing fonts.
+        args.AlternateFontStream = new FileStream(Path.GetFullPath(@"../../../Data/times.ttf"), FileMode.Open, FileAccess.ReadWrite);
 }

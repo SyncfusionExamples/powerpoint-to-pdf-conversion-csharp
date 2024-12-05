@@ -13,8 +13,6 @@ using (FileStream inputStream = new FileStream(@"../../../Data/Template.pptx", F
         pptxDoc.FontSettings.FallbackFonts.Add(ScriptType.Arabic, "Arial, Times New Roman");
         //Add fallback font for "Hebrew" script type.
         pptxDoc.FontSettings.FallbackFonts.Add(ScriptType.Hebrew, "Arial, Courier New");
-        //Add fallback font for "Hindi" script type.
-        pptxDoc.FontSettings.FallbackFonts.Add(ScriptType.Hindi, "Mangal, Nirmala UI");
         //Add fallback font for "Chinese" script type.
         pptxDoc.FontSettings.FallbackFonts.Add(ScriptType.Chinese, "DengXian, MingLiU");
         //Add fallback font for "Japanese" script type.
